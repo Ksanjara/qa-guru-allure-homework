@@ -32,21 +32,21 @@ public class AllureTests extends TestBase {
     @Test
     void lambdaIssueNameTest(){
         SelenideLogger.addListener("allure", new AllureSelenide());
-        step("Открываем главную страницу гитхаб", () -> {
+        step("Открыть главную страницу гитхаб", () -> {
             open("");
         });
-        step("Ищем репозиторий " + repoPath, () -> {
+        step("Найти репозиторий " + repoPath, () -> {
             $(".header-search-button").click();
             $("#query-builder-test").sendKeys(repoPath);
             $("#query-builder-test").submit();
         });
-        step("Кликаем по ссылке репозитория " + repoPath, () -> {
+        step("Кликнуть по ссылке репозитория " + repoPath, () -> {
             $(linkText(repoPath)).click();
         });
-        step("Открываем таб Issues", () -> {
+        step("Открыть таб Issues", () -> {
             $("#issues-tab").click();
         });
-        step("Проверяем наличие Issue с именем " + issueName, () -> {
+        step("Проверить наличие Issue с именем " + issueName, () -> {
             $(withText(issueName)).should(Condition.exist);
         });
 
